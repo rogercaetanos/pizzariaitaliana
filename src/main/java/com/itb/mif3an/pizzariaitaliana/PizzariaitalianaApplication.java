@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PizzariaitalianaApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(PizzariaitalianaApplication.class, args);
+		System.out.println("Projeto em execução na porta 8080");
 	}
 
 }
