@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "Produto") // facultativo quando o nome da classe é o mesmo da tabela
 @Data
@@ -26,10 +28,10 @@ public class Produto {
     private String descricao;
     @Column(nullable = true, columnDefinition = "DECIMAL(5,2)")
     @JsonDeserialize(using = BigDecimalDeserializer.class)
-    private double valorVenda;
+    private BigDecimal valorVenda;
     @Column(nullable = true, columnDefinition = "DECIMAL(5,2)")
     @JsonDeserialize(using = BigDecimalDeserializer.class)
-    private double valorCompra;
+    private BigDecimal valorCompra;
     @Column(nullable = true, length = 20)
     private String tipo;
     @JsonIgnore
