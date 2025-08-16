@@ -1,10 +1,13 @@
 package com.itb.mif3an.pizzariaitaliana.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @Entity
@@ -23,5 +26,9 @@ public class Categoria {
     @Column(nullable = true, length = 255)
     private String descricao;
     private boolean codStatus;
+
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Produto> produtos;
 
 }

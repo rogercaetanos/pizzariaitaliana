@@ -38,4 +38,25 @@ public class Produto {
     private int quantidadeEstoque;
     private boolean codStatus;
 
+    // Relacionametos
+    // @ManyToOne : Muitos p/ um
+    // CascadeType: Define como as operações de persistência (INSERT, UPDATE, DELETE) serão
+    //              propagadas para uma entidade filha no banco de dados.
+    // MERGE: Propapaga operações de atualização da entidade pai para as filhas
+    //        O MERGE é usado para atuallizar uma entidade desaclopada no banco de dados,
+    //        Se a entidade não existe no banco, o MERGE a insere,
+    //        Se já existe, o MERGE atualiza os dados com os novos valores
+    // Além do MERGE, temos: ALL, PERSIST, REMOVE, REFRESH E DETACH
+    // fetch: Define como os dados relacionados serão carregados do banco de dados quando
+    //        a entidade for consultada
+    // FetchType.LAZY: Os dados só serão carregados quando forem acessados explicitamente no código
+    // FetchType.EAGER: Join automático, os dados relacionados serão carregados quando a entidade for
+    //                  consultada
+
+
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id", nullable = true)
+    private Categoria categoria;
+
+
 }
