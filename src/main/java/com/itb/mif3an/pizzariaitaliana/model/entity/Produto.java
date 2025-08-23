@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "Produto") // facultativo quando o nome da classe é o mesmo da tabela
@@ -57,6 +58,11 @@ public class Produto {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id", referencedColumnName = "id", nullable = true)
     private Categoria categoria;
+
+
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<ItemPedido> itensPedido;
 
 
 }
