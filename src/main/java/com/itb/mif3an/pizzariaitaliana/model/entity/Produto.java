@@ -60,7 +60,7 @@ public class Produto {
     private Categoria categoria;
 
 
-    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<ItemPedido> itensPedido;
 
