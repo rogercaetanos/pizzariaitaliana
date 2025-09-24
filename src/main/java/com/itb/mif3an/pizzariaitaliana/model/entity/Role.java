@@ -1,6 +1,10 @@
 package com.itb.mif3an.pizzariaitaliana.model.entity;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.itb.mif3an.pizzariaitaliana.model.entity.Permission.*;
 
@@ -36,6 +40,22 @@ public enum Role {
     );
 
     private final Set<Permission> permissions;
+
     Role(Set<Permission> permissions) {this.permissions = permissions;}
+
+    public List<SimpleGrantedAuthority> getAuthorities() {
+
+        var authorities = getPermissions()
+                .stream()
+                .map(permission -> new SimpleGrantedAuthority(permission.toString()))
+                .collect(Collectors.toList());
+                authorities.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
+        return authorities;
+    }
+
+    public Set<Permission> getPermissions() {
+        return permissions;
+    }
+
 
 }
