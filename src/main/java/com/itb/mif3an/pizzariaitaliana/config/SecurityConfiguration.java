@@ -1,6 +1,5 @@
 package com.itb.mif3an.pizzariaitaliana.config;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -31,6 +30,5 @@ public class SecurityConfiguration {
 
         return http.build();
     }
-
 
 }
