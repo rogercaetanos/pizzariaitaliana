@@ -55,7 +55,7 @@ public class AuthenticationService {
 				throw new BadRequest("Já existe este email cadastrado em nossa base de dados");
 			}
 
-			Class<?> clazz = Class.forName("com.itb.mif3an.pizzaria.model." + nomeClasse); // Obtém a classe
+			Class<?> clazz = Class.forName("com.itb.mif3an.pizzariaitaliana.model.entity." + nomeClasse); // Obtém a classe
 			Usuario usuario = (Usuario) clazz.newInstance(); // Instancia o objeto
 			//Usuario usuario = (Usuario) clazz.getDeclaredConstructor().newInstance();
             // var usuario = new Usuario();

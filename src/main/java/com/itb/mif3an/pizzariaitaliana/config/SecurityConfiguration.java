@@ -62,10 +62,13 @@ public class SecurityConfiguration {
                        .requestMatchers(DELETE, "/api/v1/produto/**").hasAnyAuthority(ADMIN_DELETE.name(), FUNCIONARIO_DELETE.name())
                        .requestMatchers(GET,"/api/v1/produto/**").permitAll()
 
-                       //  End-Points (Categoria)
+                       //  End-Points (Funcinario)
+
+                       .requestMatchers(POST,"/api/v1/funcionario/**").permitAll()
 
 
-                       //  End-Points (Pedido)
+                       //  End-Points (Cliente)
+                       .requestMatchers(POST,"/api/v1/cliente/**").permitAll()
 
 
                        .requestMatchers("/api/v1/auth/authenticate").permitAll()

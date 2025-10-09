@@ -10,11 +10,13 @@ import java.util.List;
 @Entity
 @DiscriminatorValue(value = "CLIENTE")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Cliente extends Usuario {
 
+    public Cliente() {
+        this.role = Role.CLIENTE;
+    }
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore

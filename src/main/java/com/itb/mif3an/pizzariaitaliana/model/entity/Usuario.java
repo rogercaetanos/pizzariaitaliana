@@ -33,36 +33,36 @@ public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Long id;
+    protected Long id;
     @Column(nullable = false, length = 45)  // false: NOT NULL
-    private String nome;
+    protected String nome;
     @Column(nullable = false, length = 45)  // false: NOT NULL
-    private String email;
+    protected String email;
     @Column(nullable = false, length = 255)
-    private String password;
+    protected String password;
     @Column(nullable = true, length = 15)  // false: NOT NULL
-    private String cpf;
+    protected String cpf;
     @Column(nullable = true, length = 100)
-    private String logradouro;
+    protected String logradouro;
     @Column(nullable = true, length = 10)
-    private String cep;
+    protected String cep;
     @Column(nullable = true, length = 45)
-    private String bairro;
+    protected String bairro;
     @Column(nullable = true, length = 45)
-    private String cidade;
+    protected String cidade;
     @Column(nullable = true, length = 2)
-    private String uf;
-    private boolean codStatus;
+    protected String uf;
+    protected boolean codStatus;
 
     // insertable = false -> o valor desse campo não será considerado na hora de inserir um novo registro
     // updatable = false -> o valor desse campo não será atualizado quando houver update
     @Enumerated(EnumType.STRING)
     @Column(insertable = false, updatable = false)
-    private Role role;   // ADMIN, CLIENTE, FUNCIONARIO
+    protected Role role;   // ADMIN, CLIENTE, FUNCIONARIO
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<Telefone> telefones;
+    protected List<Telefone> telefones;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
